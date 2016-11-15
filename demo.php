@@ -34,4 +34,7 @@
 	
 	echo '<h2>Dirección a cadena mediante __toString</h2>';
 	echo $address_2;
+	
+	echo '<h2>Mostramos tipos de direcciones</h2>';
+	echo '<tt><pre>' . var_export(Address::$valid_address_types, TRUE) . '</pre></tt>';
 ?>

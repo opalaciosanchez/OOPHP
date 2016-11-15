@@ -5,6 +5,14 @@
      */
     class Address
     {
+    	
+    	// tipo de dirección
+    	static public $valid_address_types = array(
+    		1 => 'Residence',
+    		2 => 'Business',
+    		3 => 'Park',
+    	);
+    	
         // clave primaria para almacenar la dirección
         protected $_address_id;
         
