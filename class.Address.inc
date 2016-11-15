@@ -6,11 +6,16 @@
     class Address
     {
     	
-    	// tipo de dirección
+    	// tipos de dirección mediante constantes
+    	const ADDRESS_TYPE_RESIDENCE = 1;
+    	const ADDRESS_TYPE_BUSINESS = 2;
+    	const ADDRESS_TYPE_PARK = 3;
+    	
+    	// tipo de dirección usando las constantes antes añadidas
     	static public $valid_address_types = array(
-    		1 => 'Residence',
-    		2 => 'Business',
-    		3 => 'Park',
+    		self::ADDRESS_TYPE_RESIDENCE => 'Residence',
+    		self::ADDRESS_TYPE_BUSINESS => 'Business',
+    		self::ADDRESS_TYPE_PARK => 'Park',
     	);
     	
         // clave primaria para almacenar la dirección
