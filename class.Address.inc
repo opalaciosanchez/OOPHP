@@ -21,6 +21,9 @@
         // clave primaria para almacenar la dirección
         protected $_address_id;
         
+        // tipo de id de la dirección
+        protected $_address_type_id;
+        
         // hora de creación y de actualización
         protected $_time_created;
         protected $_time_updated;
@@ -90,6 +93,11 @@
         }
         
         function __set($name, $value) {
+        	// añadimos una id válida de dirección
+        	if ('address_type_id' == $name) {
+        		$this->_setAddressTypeId($value);
+        		return;
+        	}
         	// permitimos insertar el valor de _postal_code
         	if ('postal_code' == $name) {
         		$this->$name = $value;
@@ -136,6 +144,24 @@
         	$output .= '<br/>';
         	$output .= $this->country_name;
         	return $output;
+        }
+        
+        /**
+         * Determinamos si un tipo de dirección es válida
+         */
+        static public function isValidAddressTypeId($address_type_id) {
+        	// comprobamos si existe la clave dentro de la matriz de los tipos de dirección
+        	return array_key_exists($address_type_id, self::$valid_address_types);
+        }
+        
+        /**
+         * Si es válida la id de dirección, se establece mediante set (en el magic method set de arriba)
+         * @param integer $address_type_id
+         */
+        protected function _setAddressTypeId($address_type_id) {
+        	if(self::isValidAddressTypeId($address_type_id)) {
+        		$this->_address_type_id = $address_type_id;
+        	}
         }
 
     }

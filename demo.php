@@ -10,6 +10,7 @@
 	$address->subdivision_name = 'State';
 	$address->postal_code = '12345';
 	$address->country_name = 'United States of America';
+	$address->address_type_id = 1;
 	
 	// mostramos la matriz con las propiedades en forma de código para hacer debug
 	echo '<code><pre>' . var_export($address, TRUE) . '</pre></code>';
@@ -37,4 +38,11 @@
 	
 	echo '<h2>Mostramos tipos de direcciones</h2>';
 	echo '<tt><pre>' . var_export(Address::$valid_address_types, TRUE) . '</pre></tt>';
+	
+	echo '<h2>Probando la validación de tipos de dirección</h2>';
+	for ($id = 0; $id <= 4; $id++) {
+		echo "<div>$id: ";
+		echo Address::isValidAddressTypeId($id) ? 'Valid' : 'Invalid';
+		echo "</div>";
+	}
 ?>
